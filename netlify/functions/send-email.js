@@ -3,7 +3,6 @@ const nodemailer = require("nodemailer");
 exports.handler = async (event) => {
   let data = {};
 
-  // ✅ safer JSON parse
   try {
     data = JSON.parse(event.body || "{}");
   } catch {
@@ -21,6 +20,9 @@ exports.handler = async (event) => {
         pass: process.env.EMAIL_PASS,
       },
     });
+    console.log("EVENT BODY:", event.body);
+    console.log("EMAIL_USER:", process.env.EMAIL_USER);
+    console.log("EMAIL_PASS:", process.env.EMAIL_PASS ? "exists" : "missing");
 
     const mailOptions = {
       from: process.env.EMAIL_USER,
