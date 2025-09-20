@@ -1,9 +1,19 @@
 const nodemailer = require("nodemailer");
 
 exports.handler = async (event) => {
-  try {
-    const data = JSON.parse(event.body);
+  let data = {};
 
+  // ✅ safer JSON parse
+  try {
+    data = JSON.parse(event.body || "{}");
+  } catch {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ success: false, error: "Invalid JSON body" }),
+    };
+  }
+
+  try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -15,8 +25,8 @@ exports.handler = async (event) => {
     const mailOptions = {
       from: process.env.EMAIL_USER,
       // to: "admin@empowerthroughcare.com",
-      to: "kqbdgt@gmail.com", //testing email
-      subject: `New ${data.FormTitle} Submission`,
+      to: "kqbdgt@gmail.com", // testing email
+      subject: `New ${data.FormTitle || "Form"} Submission`,
       text: JSON.stringify(data, null, 2),
     };
 

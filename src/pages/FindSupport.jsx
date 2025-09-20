@@ -28,7 +28,6 @@ const FindSupport = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(form.current).entries());
-    data.FormTitle = "Contact Form";
 
     try {
       const res = await fetch("/.netlify/functions/send-email", {
@@ -95,8 +94,6 @@ const FindSupport = () => {
         >
           {/* Hidden field for form title */}
           <input type="hidden" name="FormTitle" value="Find Support" />
-          {/* Captcha for spam prevention */}
-          <input type="hidden" name="_captcha" value="true" />
 
           <input
             type="text"

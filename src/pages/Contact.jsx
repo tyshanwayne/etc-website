@@ -9,7 +9,6 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(form.current).entries());
-    data.FormTitle = "Find Support Form";
 
     try {
       const res = await fetch("/.netlify/functions/send-email", {
@@ -119,14 +118,6 @@ const Contact = () => {
             placeholder="Message *"
             className="p-3 border rounded"
           ></textarea>
-
-          {/* Captcha and redirect */}
-          <input type="hidden" name="_captcha" value="true" />
-          <input
-            type="hidden"
-            name="_next"
-            value="https://yourwebsite.com/thank-you"
-          />
 
           <button
             type="submit"

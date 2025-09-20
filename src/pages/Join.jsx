@@ -9,7 +9,6 @@ const Join = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(form.current).entries());
-    data.FormTitle = "Join Form";
 
     try {
       const res = await fetch("/.netlify/functions/send-email", {
@@ -137,14 +136,6 @@ const Join = () => {
             placeholder="Message (optional)"
             className="p-3 border rounded md:col-span-2"
           ></textarea>
-
-          {/* Hidden captcha and redirect */}
-          <input type="hidden" name="_captcha" value="true" />
-          <input
-            type="hidden"
-            name="_next"
-            value="https://yourwebsite.com/thank-you"
-          />
 
           <div className="flex justify-center md:col-span-2">
             <button
