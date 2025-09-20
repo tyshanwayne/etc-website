@@ -51,7 +51,7 @@ exports.handler = async (event) => {
     const dateTimeStr = `${month}${day}${year}${hour}${minute}${second}`;
 
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+      from: "ETC Mail",
       to: [
         "nazar@empowerthroughcare.com",
         "eram@empowerthroughcare.com",
