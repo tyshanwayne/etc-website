@@ -12,12 +12,17 @@ exports.handler = async (event) => {
       },
     });
 
+    function formatService(service) {
+      return service
+        .replace(/-/g, " ") // replace dashes with spaces
+        .replace(/\b\w/g, (c) => c.toUpperCase()); // capitalize first letters
+    }
     // Build HTML automatically from form fields
     const fieldsHtml = Object.entries(data)
-      .filter(([key]) => key !== "FormTitle") // skip the title
+      .filter(([key]) => key !== "FormTitle")
       .map(([key, value]) => {
         const label =
-          key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, " $1"); // format camelCase to words
+          key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, " $1");
         return `<p><strong>${label}:</strong> ${value}</p>`;
       })
       .join("");
