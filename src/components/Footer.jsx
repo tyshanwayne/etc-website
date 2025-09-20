@@ -76,13 +76,13 @@ const Footer = () => {
         <div>
           <h3 className="mb-3 text-lg font-semibold">Connect With Us</h3>
           <div className="flex gap-4 text-xl">
-            <a href="#" className="transition hover:text-et-teal">
+            <a href="#!" className="transition hover:text-et-teal">
               <FontAwesomeIcon icon={["fab", "facebook"]} />
             </a>
-            <a href="#" className="transition hover:text-et-teal">
+            <a href="#!" className="transition hover:text-et-teal">
               <FontAwesomeIcon icon={["fab", "instagram"]} />
             </a>
-            <a href="#" className="transition hover:text-et-teal">
+            <a href="#!" className="transition hover:text-et-teal">
               <FontAwesomeIcon icon={["fab", "linkedin"]} />
             </a>
           </div>
