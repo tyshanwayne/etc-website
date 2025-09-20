@@ -83,15 +83,8 @@ const Extra = () => {
                 me my independence back.”
               </p>
               <div className="flex items-center gap-4">
-                <img
-                  src="https://randomuser.me/api/portraits/women/65.jpg"
-                  alt="Client 1"
-                  className="object-cover w-12 h-12 rounded-full"
-                />
-                <div>
-                  <h4 className="font-semibold text-et-purple">Karina</h4>
-                  <span className="text-sm text-gray-500">Participant</span>
-                </div>
+                <h4 className="font-semibold text-et-purple">Karina</h4>
+                <span className="text-sm text-gray-500">Participant</span>
               </div>
             </div>
             {/* Testimonial 3 */}
@@ -101,15 +94,8 @@ const Extra = () => {
                 truly makes a difference."
               </p>
               <div className="flex items-center gap-4">
-                <img
-                  src="https://randomuser.me/api/portraits/women/44.jpg"
-                  alt="Client 3"
-                  className="object-cover w-12 h-12 rounded-full"
-                />
-                <div>
-                  <h4 className="font-semibold text-et-purple">Sarah</h4>
-                  <span className="text-sm text-gray-500">Support Worker</span>
-                </div>
+                <h4 className="font-semibold text-et-purple">Sarah</h4>
+                <span className="text-sm text-gray-500">Support Worker</span>
               </div>
             </div>
             {/* Testimonial 2 */}
@@ -119,17 +105,10 @@ const Extra = () => {
                 and they make a difference.”
               </p>
               <div className="flex items-center gap-4">
-                <img
-                  src="https://randomuser.me/api/portraits/women/32.jpg"
-                  alt="Client 2"
-                  className="object-cover w-12 h-12 rounded-full"
-                />
-                <div>
-                  <h4 className="font-semibold text-et-purple">Jessica</h4>
-                  <span className="text-sm text-gray-500">
-                    Mother of a Participant
-                  </span>
-                </div>
+                <h4 className="font-semibold text-et-purple">Jessica</h4>
+                <span className="text-sm text-gray-500">
+                  Mother of a Participant
+                </span>
               </div>
             </div>
           </div>
