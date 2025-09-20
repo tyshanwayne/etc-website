@@ -17,12 +17,13 @@ exports.handler = async (event) => {
         .replace(/-/g, " ") // replace dashes with spaces
         .replace(/\b\w/g, (c) => c.toUpperCase()); // capitalize first letters
     }
+
     // Build HTML automatically from form fields
     const fieldsHtml = Object.entries(data)
       .filter(([key]) => key !== "FormTitle")
       .map(([key, value]) => {
         if (key === "service") {
-          displayValue = formatService(value);
+          value = formatService(value);
         }
         const label =
           key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, " $1");
@@ -30,10 +31,19 @@ exports.handler = async (event) => {
       })
       .join("");
 
+    // Generate date-time string for FormTitle
+    const now = new Date();
+    const pad = (n) => n.toString().padStart(2, "0");
+    const dateTimeStr = `${pad(now.getMonth() + 1)}${pad(
+      now.getDate()
+    )}${now.getFullYear()}${pad(now.getHours())}${pad(now.getMinutes())}${pad(
+      now.getSeconds()
+    )}`;
+
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: "kqbdgt@gmail.com", // testing email
-      subject: `New ${data.FormTitle} Submission`,
+      subject: `New ${data.FormTitle} Submission - ${dateTimeStr}`,
       html: `
         <h2 style="color:#2c3e50;">${data.FormTitle}</h2>
         ${fieldsHtml}
