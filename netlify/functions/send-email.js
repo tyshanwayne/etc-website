@@ -21,6 +21,9 @@ exports.handler = async (event) => {
     const fieldsHtml = Object.entries(data)
       .filter(([key]) => key !== "FormTitle")
       .map(([key, value]) => {
+        if (key === "service") {
+          displayValue = formatService(value);
+        }
         const label =
           key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, " $1");
         return `<p><strong>${label}:</strong> ${value}</p>`;

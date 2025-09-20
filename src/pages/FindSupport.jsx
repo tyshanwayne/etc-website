@@ -29,6 +29,10 @@ const FindSupport = () => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(form.current).entries());
 
+    if (data.service === "other") {
+      data.service = `Other - (${otherService})`;
+    }
+
     try {
       const res = await fetch("/.netlify/functions/send-email", {
         method: "POST",
