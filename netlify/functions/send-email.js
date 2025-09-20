@@ -52,7 +52,7 @@ exports.handler = async (event) => {
 
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: "kqbdgt@gmail.com", // testing email
+      to: "admin@empowerthroughcare.com",
       subject: `New ${data.FormTitle} Submission - ${dateTimeStr}`,
       html: `
         <h2 style="color:#2c3e50;">${data.FormTitle}</h2>
