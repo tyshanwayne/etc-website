@@ -82,10 +82,8 @@ const Extra = () => {
                 “For the first time in years, I feel like myself again. ETC gave
                 me my independence back.”
               </p>
-              <div className="flex items-center gap-4">
-                <h4 className="font-semibold text-et-purple">Karina</h4>
-                <span className="text-sm text-gray-500">Participant</span>
-              </div>
+              <h4 className="font-semibold text-et-purple">Karina</h4>
+              <span className="text-sm text-gray-500">Participant</span>
             </div>
             {/* Testimonial 3 */}
             <div className="p-6 transition bg-white shadow-md rounded-2xl hover:shadow-lg">
@@ -93,10 +91,8 @@ const Extra = () => {
                 "I get to support participants and know that the care we provide
                 truly makes a difference."
               </p>
-              <div className="flex items-center gap-4">
-                <h4 className="font-semibold text-et-purple">Sarah</h4>
-                <span className="text-sm text-gray-500">Support Worker</span>
-              </div>
+              <h4 className="font-semibold text-et-purple">Sarah</h4>
+              <span className="text-sm text-gray-500">Support Worker</span>
             </div>
             {/* Testimonial 2 */}
             <div className="p-6 transition bg-white shadow-md rounded-2xl hover:shadow-lg">
@@ -104,12 +100,10 @@ const Extra = () => {
                 The support feels like family. They really listen, they care,
                 and they make a difference.”
               </p>
-              <div className="flex items-center gap-4">
-                <h4 className="font-semibold text-et-purple">Jessica</h4>
-                <span className="text-sm text-gray-500">
-                  Mother of a Participant
-                </span>
-              </div>
+              <h4 className="font-semibold text-et-purple">Jessica</h4>
+              <span className="text-sm text-gray-500">
+                Mother of a Participant
+              </span>
             </div>
           </div>
         </div>
