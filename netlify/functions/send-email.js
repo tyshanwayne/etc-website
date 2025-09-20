@@ -33,12 +33,22 @@ exports.handler = async (event) => {
 
     // Generate date-time string for FormTitle
     const now = new Date();
-    const pad = (n) => n.toString().padStart(2, "0");
-    const dateTimeStr = `${pad(now.getMonth() + 1)}${pad(
-      now.getDate()
-    )}${now.getFullYear()}${pad(now.getHours())}${pad(now.getMinutes())}${pad(
-      now.getSeconds()
-    )}`;
+    const melbourneTime = now.toLocaleString("en-AU", {
+      timeZone: "Australia/Melbourne",
+      hour12: false,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+
+    // Format as MMDDYYYYHHMMSS
+    const [datePart, timePart] = melbourneTime.split(", ");
+    const [day, month, year] = datePart.split("/");
+    const [hour, minute, second] = timePart.split(":");
+    const dateTimeStr = `${month}${day}${year}${hour}${minute}${second}`;
 
     const mailOptions = {
       from: process.env.EMAIL_USER,
