@@ -1,18 +1,9 @@
 const nodemailer = require("nodemailer");
 
 exports.handler = async (event) => {
-  let data = {};
-
   try {
-    data = JSON.parse(event.body || "{}");
-  } catch {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ success: false, error: "Invalid JSON body" }),
-    };
-  }
+    const data = JSON.parse(event.body);
 
-  try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -20,16 +11,28 @@ exports.handler = async (event) => {
         pass: process.env.EMAIL_PASS,
       },
     });
-    console.log("EVENT BODY:", event.body);
-    console.log("EMAIL_USER:", process.env.EMAIL_USER);
-    console.log("EMAIL_PASS:", process.env.EMAIL_PASS ? "exists" : "missing");
+
+    // Build HTML automatically from form fields
+    const fieldsHtml = Object.entries(data)
+      .filter(([key]) => key !== "FormTitle") // skip the title
+      .map(([key, value]) => {
+        const label =
+          key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, " $1"); // format camelCase to words
+        return `<p><strong>${label}:</strong> ${value}</p>`;
+      })
+      .join("");
 
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      // to: "admin@empowerthroughcare.com",
       to: "kqbdgt@gmail.com", // testing email
-      subject: `New ${data.FormTitle || "Form"} Submission`,
-      text: JSON.stringify(data, null, 2),
+      subject: `New ${data.FormTitle} Submission`,
+      html: `
+        <h2 style="color:#2c3e50;">${data.FormTitle}</h2>
+        ${fieldsHtml}
+        <hr/>
+        <small>Submitted via Empower Through Care website</small>
+      `,
+      text: JSON.stringify(data, null, 2), // fallback plain text
     };
 
     await transporter.sendMail(mailOptions);
